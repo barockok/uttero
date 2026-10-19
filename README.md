@@ -13,7 +13,7 @@ claude plugin install uttero@uttero
 ```
 
    Restart Claude Code sessions that were already open.
-3. For voice, add your OpenAI API key in uttero Settings (or have `OPENAI_API_KEY` in your shell). Text messages to the manager work without it.
+3. For voice, add your OpenAI API key in uttero Settings > Voice (or have `OPENAI_API_KEY` in your shell). Text messages to the manager work without it.
 
 After that, uttero updates itself: use Check for Updates in its menu, or let it check automatically.
 
