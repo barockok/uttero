@@ -1,0 +1,5 @@
+{
+  "name": "uttero",
+  "version": "0.0.2",
+  "description": "Connects Claude Code sessions to the uttero voice manager: voice approvals, turn updates, relayed instructions."
+}

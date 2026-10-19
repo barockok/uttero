@@ -1,0 +1,7 @@
+{
+  "name": "uttero",
+  "owner": { "name": "Zidni Mubarok" },
+  "plugins": [
+    { "name": "uttero", "source": "./plugin", "description": "Connects Claude Code sessions to the uttero voice manager" }
+  ]
+}
