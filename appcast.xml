@@ -3,6 +3,15 @@
   <channel>
     <title>uttero</title>
     <item>
+      <title>uttero 0.1.7</title>
+      <pubDate>Mon, 19 Oct 2026 08:48:50 GMT</pubDate>
+      <sparkle:version>9</sparkle:version>
+      <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Menu: install the Claude Code plugin when it is missing</li><li>Ship the core inside the app as one executable; publish downloads, feed and plugin from barockok/uttero</li><li>Manager as a fast dispatcher: background jobs, list_jobs, stop_session, shorter transcript wait</li><li>Voice setting applies from the next call, without a core restart</li><li>Timing log: speech text, delegation and hand-off to the manager, on stderr</li></ul>]]></description>
+      <enclosure url="https://raw.githubusercontent.com/barockok/uttero/main/uttero-0.1.7-macos.zip" type="application/octet-stream" sparkle:edSignature="Pk56NLPBvYzVlmX6Z6O8DLX1e/yY3TBvu/h4Ik+LpyCUDmc1AdRC/K2mA73oZ3cUqo/nZL0izfVyJk7oLJsTDA==" length="66769364" />
+    </item>
+    <item>
       <title>uttero 0.1.6</title>
       <pubDate>Sat, 17 Oct 2026 08:26:31 GMT</pubDate>
       <sparkle:version>7</sparkle:version>
