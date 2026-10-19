@@ -9,7 +9,7 @@
       <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
       <description><![CDATA[<ul><li>In-app updates with Sparkle, published to the public uttero-releases feed</li><li>Release the mic when the wake phrase is off and no call is open</li></ul>]]></description>
-      <enclosure url="https://raw.githubusercontent.com/barockok/uttero-releases/main/uttero-0.1.6-macos.zip" type="application/octet-stream" sparkle:edSignature="VMpFfM83v8ykiQHxQcz/yjP3EjuPQo3Sw1FrzQzASOr5MiSnjsY1Ki3I8jQcQ5NE62+U+P/LUBUmkO6GJlApCA==" length="1988097" />
+      <enclosure url="https://raw.githubusercontent.com/barockok/uttero/main/uttero-0.1.6-macos.zip" type="application/octet-stream" sparkle:edSignature="VMpFfM83v8ykiQHxQcz/yjP3EjuPQo3Sw1FrzQzASOr5MiSnjsY1Ki3I8jQcQ5NE62+U+P/LUBUmkO6GJlApCA==" length="1988097" />
     </item>
   </channel>
 </rss>
