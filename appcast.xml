@@ -3,6 +3,15 @@
   <channel>
     <title>uttero</title>
     <item>
+      <title>uttero 0.1.10</title>
+      <pubDate>Wed, 21 Oct 2026 05:16:35 GMT</pubDate>
+      <sparkle:version>12</sparkle:version>
+      <sparkle:shortVersionString>0.1.10</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Welcome guide: check for an earlier setup only once, so clearing onboarded shows the guide again</li></ul>]]></description>
+      <enclosure url="https://raw.githubusercontent.com/barockok/uttero/main/uttero-0.1.10-macos.zip" type="application/octet-stream" sparkle:edSignature="rEhnnz5ptVUy96BjWjv8PTelXbUy/2KPEuaVANbNT/vgxctP/f3whfFmzqXgjdvIRJpe/Q/JpOYzOSzBBFsIBA==" length="67254888" />
+    </item>
+    <item>
       <title>uttero 0.1.9</title>
       <pubDate>Wed, 21 Oct 2026 04:35:48 GMT</pubDate>
       <sparkle:version>11</sparkle:version>

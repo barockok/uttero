@@ -4,7 +4,7 @@ uttero is a menu bar app for talking to every Claude Code session on your Mac, b
 
 ## Install
 
-1. <!-- download -->[Download uttero 0.1.9](https://github.com/barockok/uttero/raw/main/uttero-0.1.9.dmg)<!-- /download -->, open it and drag uttero to Applications.
+1. <!-- download -->[Download uttero 0.1.10](https://github.com/barockok/uttero/raw/main/uttero-0.1.10.dmg)<!-- /download -->, open it and drag uttero to Applications.
 2. Open uttero. It lives in the menu bar (no Dock icon). In its menu, click **Install the Claude Code Plugin**, so sessions send their approvals and updates to uttero. Or install it yourself:
 
 ```
