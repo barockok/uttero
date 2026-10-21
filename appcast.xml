@@ -3,6 +3,15 @@
   <channel>
     <title>uttero</title>
     <item>
+      <title>uttero 0.1.9</title>
+      <pubDate>Wed, 21 Oct 2026 04:35:48 GMT</pubDate>
+      <sparkle:version>11</sparkle:version>
+      <sparkle:shortVersionString>0.1.9</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Onboarding: rename the pill button&#x27;s view so it compiles (Body clashed with ButtonStyle.Body)</li><li>Merge pull request #2 from barockok/claude/adoring-maxwell-1r1u68</li><li>Welcome guide on first launch: microphone, wake word, voice, Claude Code</li></ul>]]></description>
+      <enclosure url="https://raw.githubusercontent.com/barockok/uttero/main/uttero-0.1.9-macos.zip" type="application/octet-stream" sparkle:edSignature="9WKOFVGpbLYtK2UemjrJmqbFSIMn2+BbzEttim5nllymnRSQ5On7rnvEp1DdsPnyZoXi2dBr19Q0zGu+4mYeBw==" length="67254771" />
+    </item>
+    <item>
       <title>uttero 0.1.8</title>
       <pubDate>Wed, 21 Oct 2026 02:46:47 GMT</pubDate>
       <sparkle:version>10</sparkle:version>
