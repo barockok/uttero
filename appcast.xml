@@ -3,6 +3,15 @@
   <channel>
     <title>uttero</title>
     <item>
+      <title>uttero 0.1.8</title>
+      <pubDate>Wed, 21 Oct 2026 02:46:47 GMT</pubDate>
+      <sparkle:version>10</sparkle:version>
+      <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Merge pull request #1 from barockok/claude/vigilant-shannon-q6zcpf</li><li>One uttero across its places, plus long-term memory for the manager</li><li>Release: keep the public README download link on the newest DMG</li></ul>]]></description>
+      <enclosure url="https://raw.githubusercontent.com/barockok/uttero/main/uttero-0.1.8-macos.zip" type="application/octet-stream" sparkle:edSignature="8nHmJUK8jUbxEE1bbwRUtmRIq1BVlEaFfp/J98096ae02tG/jNLp/38MnOU4IVHsxrIjZLxkJexRgZ+ReYKNCw==" length="66779217" />
+    </item>
+    <item>
       <title>uttero 0.1.7</title>
       <pubDate>Mon, 19 Oct 2026 08:48:50 GMT</pubDate>
       <sparkle:version>9</sparkle:version>
