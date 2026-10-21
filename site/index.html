@@ -41,35 +41,78 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .btn.sm{font-size:11px;padding:8px 16px;gap:8px}
 
 /* HERO */
-.hero{padding:140px 0 100px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:800px;height:800px;background:radial-gradient(circle,rgba(98,72,232,0.16) 0%,transparent 60%);pointer-events:none}
-.hero .container{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;position:relative}
-.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--v400);margin-bottom:24px}
-h1{font-family:var(--mono);font-size:clamp(36px,4.6vw,60px);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin-bottom:24px}
+.hero{padding:128px 0 96px;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:1000px;height:900px;background:radial-gradient(circle,rgba(98,72,232,0.18) 0%,transparent 60%);pointer-events:none}
+.hero .container{position:relative}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--v400);margin-bottom:20px}
+h1{font-family:var(--mono);font-size:clamp(34px,5vw,64px);font-weight:700;line-height:1.04;letter-spacing:-.03em;margin-bottom:20px}
 h1 span{color:var(--v400)}
-.sub{font-size:18px;color:var(--muted);max-width:480px;line-height:1.7;margin-bottom:36px}
+.sub{font-size:18px;color:var(--muted);max-width:560px;margin:0 auto 32px;line-height:1.7}
 .sub strong{color:var(--white);font-weight:500}
 .meta{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);margin-top:16px}
 
-/* MENU MOCK */
-.mock{width:min(360px,100%);margin-left:auto;background:rgba(22,22,31,0.92);border:1px solid var(--border-hi);border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,0.55);padding:12px;font-size:13px}
-.mp-head{display:flex;align-items:center;gap:10px;padding:6px 6px 12px;border-bottom:1px solid var(--border)}
-.mp-live{width:8px;height:8px;border-radius:50%;background:var(--green)}
-.mp-title{font-weight:600}
-.mp-sub{font-size:11px;color:var(--muted)}
-.mp-end{margin-left:auto;width:26px;height:26px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center}
-.mp-lines{padding:10px 6px;display:flex;flex-direction:column;gap:6px}
-.mp-line{font-size:12px;color:var(--muted);line-height:1.45}
-.mp-line b{color:var(--white);font-weight:500}
-.mp-approval{margin:4px 0 10px;padding:10px;border-radius:10px;background:rgba(98,72,232,0.12);border:1px solid rgba(98,72,232,0.3)}
-.mp-approval .q{font-size:12px;margin-bottom:8px}
-.mp-approval code{font-family:var(--mono);font-size:11px;color:var(--v300)}
-.mp-approval .row{display:flex;gap:6px}
-.mp-approval .row div{flex:1;text-align:center;font-size:12px;padding:5px;border-radius:7px;background:var(--bg3)}
-.mp-approval .row div:first-child{background:var(--v500);color:#fff}
-.mp-sess{display:flex;align-items:center;gap:10px;padding:6px;font-size:12px}
-.mp-sess i{width:7px;height:7px;border-radius:50%}
-.mp-sess span{margin-left:auto;color:var(--muted);font-size:11px}
+/* MAC SCREEN: recreated from the app's SwiftUI views (MenuContent, HUDView) */
+.screen{margin:64px auto 0;max-width:1200px;border-radius:14px;border:1px solid var(--border-hi);box-shadow:0 40px 120px rgba(0,0,0,0.6);overflow:hidden;position:relative;text-align:left}
+.scene{--s:1;width:1440px;height:820px;transform:scale(var(--s));transform-origin:0 0;position:relative;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.88);-webkit-font-smoothing:antialiased;
+  background:radial-gradient(120% 90% at 85% 0%,#4b2fb8 0%,transparent 55%),radial-gradient(90% 80% at 0% 100%,#0f5a7a 0%,transparent 60%),linear-gradient(160deg,#1b1340 0%,#0b0b1a 70%)}
+.mac-bar{height:30px;display:flex;align-items:center;gap:20px;padding:0 14px;background:rgba(20,16,40,.35);backdrop-filter:blur(30px);font-size:13px;color:rgba(255,255,255,.92)}
+.mac-bar b{font-weight:700}
+.mac-bar .r{margin-left:auto;display:flex;align-items:center;gap:16px}
+.mac-bar .ug{display:flex;align-items:center;justify-content:center;width:30px;height:22px;border-radius:6px;background:rgba(255,255,255,.22)}
+/* terminal window in the background */
+.term{position:absolute;left:72px;top:220px;width:620px;height:400px;border-radius:12px;background:rgba(22,22,26,.92);border:.5px solid rgba(255,255,255,.14);box-shadow:0 20px 60px rgba(0,0,0,.5);overflow:hidden}
+.term-top{height:30px;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:.5px solid rgba(255,255,255,.08);font-size:12px;color:rgba(235,235,245,.55)}
+.term-top i{width:12px;height:12px;border-radius:50%}
+.term-top span{margin:0 auto;padding-right:52px}
+.term pre{font-family:"SF Mono",Menlo,Monaco,monospace;font-size:12px;line-height:1.65;padding:14px 16px;color:rgba(255,255,255,.82);white-space:pre-wrap}
+.term .c{color:#d97757}.term .d{color:rgba(235,235,245,.45)}.term .g{color:#30d158}.term .y{color:#ffd60a}
+/* call bar (Liquid Glass) */
+.hud{position:absolute;top:44px;left:400px;display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.07));backdrop-filter:blur(24px) saturate(180%);border:.5px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 30px rgba(0,0,0,.35)}
+.callbar{display:flex;align-items:center;gap:12px;padding:8px 8px 8px 18px;border-radius:999px}
+.lvl{display:flex;align-items:center;gap:2.5px;width:24px;height:20px}
+.lvl i{width:3px;border-radius:2px;background:#30d158}
+.cb-text{width:300px}
+.cb-cap{font-size:11px;color:rgba(235,235,245,.6)}
+.cb-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.12)}
+.gbtn{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.gbtn.red{background:#ff453a;border-color:rgba(255,255,255,.3)}
+.apprbar{display:flex;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-radius:22px}
+.apprbar .t{width:300px}
+.apprbar code{font-family:"SF Mono",Menlo,monospace;font-size:12px}
+.gb{font-size:13px;padding:6px 14px;border-radius:999px}
+.gb.p{background:#745cf0;color:#fff;border-color:rgba(255,255,255,.3)}
+/* the menu (MenuContent.swift, 320pt wide) */
+.menu{position:absolute;top:34px;right:64px;width:320px;padding:6px 0;border-radius:12px;background:rgba(36,34,44,.78);backdrop-filter:blur(40px) saturate(180%);border:.5px solid rgba(255,255,255,.16);box-shadow:0 0 0 .5px rgba(0,0,0,.6),0 24px 60px rgba(0,0,0,.55)}
+.m-head{display:flex;align-items:center;padding:6px 14px 8px}
+.m-head b{font-size:13px;font-weight:700}
+.m-head .w{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(235,235,245,.55)}
+.sw{width:26px;height:15px;border-radius:8px;background:#745cf0;position:relative}
+.sw::after{content:'';position:absolute;right:1.5px;top:1.5px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.m-row{display:flex;align-items:center;gap:10px;padding:0 14px 8px}
+.ri{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;background:rgba(255,255,255,.1)}
+.ri.green{background:#30d158}.ri.orange{background:#ff9f0a}.ri.accent{background:#745cf0}
+.sec{font-size:11px;color:rgba(235,235,245,.55);line-height:1.3}
+.m-row .grow{flex:1;min-width:0}
+.sbtn{font-size:12px;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.12);box-shadow:inset 0 .5px 0 rgba(255,255,255,.12)}
+.sbtn.red{color:#ff453a}
+.sbtn.p{background:#745cf0;color:#fff}
+.sbtn.circ{width:24px;height:24px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.div{height:.5px;background:rgba(255,255,255,.12);margin:4px 14px}
+.sh{font-size:12px;font-weight:600;color:rgba(235,235,245,.55);padding:8px 14px 2px}
+.conv{padding:4px 14px;display:flex;flex-direction:column;gap:6px;line-height:1.35}
+.conv span{color:rgba(235,235,245,.55)}
+.appr{padding:4px 14px}
+.appr .top{display:flex;gap:10px;align-items:flex-start}
+.appr code{font-family:"SF Mono",Menlo,monospace;font-size:11px}
+.appr .btns{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+.mr{display:flex;align-items:center;gap:10px;margin:0 6px;padding:4px 8px;border-radius:6px}
+.mr.hov{background:rgba(255,255,255,.09)}
+.mr .k{margin-left:auto;color:rgba(235,235,245,.55)}
+.field{margin:2px 14px;padding:3px 7px;border-radius:5px;background:rgba(0,0,0,.18);border:.5px solid rgba(255,255,255,.16);color:rgba(235,235,245,.4)}
+
 
 /* SECTIONS */
 section.block{padding:96px 0;border-top:1px solid var(--border)}
@@ -101,14 +144,13 @@ footer a,footer small{font-family:var(--mono);font-size:10px;letter-spacing:.1em
 footer a:hover{color:var(--white)}
 
 @media(max-width:900px){
-  .hero .container{grid-template-columns:1fr}
-  .mock{margin:0 auto}
   .grid3{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .container{padding:0 16px}
   .nav-right a.link{display:none}
   .hero{padding:104px 0 72px}
+  .screen{margin-top:40px;border-radius:10px}
   section.block,.cta{padding:72px 0}
   h2{margin-bottom:32px}
 }
@@ -143,34 +185,97 @@ footer a:hover{color:var(--white)}
 <!-- HERO -->
 <section class="hero">
 <div class="container">
-  <div>
-    <div class="eyebrow">macOS menu bar app · for Claude Code</div>
-    <h1>Talk to every<br><span>Claude Code</span><br>session.</h1>
-    <p class="sub">uttero lives in your menu bar. Say <strong>“hey claude”</strong> to check on your sessions, start new ones and approve tool use, without going back to the terminal.</p>
-    <a class="btn dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2V11M8 11L4 7M8 11L12 7M3 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      DOWNLOAD FOR MAC
-    </a>
-    <div class="meta">FREE · VERSION <span data-ver>0.1.11</span> · MACOS 26+ · APPLE SILICON &amp; INTEL</div>
-  </div>
+  <div class="eyebrow">macOS menu bar app · for Claude Code</div>
+  <h1>Talk to every<br><span>Claude Code</span> session.</h1>
+  <p class="sub">uttero lives in your menu bar. Say <strong>“hey claude”</strong> to check on your sessions, start new ones and approve tool use, without going back to the terminal.</p>
+  <a class="btn dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2V11M8 11L4 7M8 11L12 7M3 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    DOWNLOAD FOR MAC
+  </a>
+  <div class="meta">FREE · VERSION <span data-ver>0.1.11</span> · MACOS 26+ · APPLE SILICON &amp; INTEL</div>
 
-  <div class="mock" aria-hidden="true">
-    <div class="mp-head">
-      <div class="mp-live"></div>
-      <div><div class="mp-title">On a call</div><div class="mp-sub">Focused on api-server</div></div>
-      <div class="mp-end"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+  <!-- A Mac desktop during a call: the menu bar, the call bar and the uttero menu, as the app draws them. -->
+  <div class="screen" id="screen" role="img" aria-label="uttero on a Mac: the call bar at the top of the screen and the uttero menu open, showing a call, an approval request and three Claude Code sessions">
+  <div class="scene" id="scene" aria-hidden="true">
+    <div class="mac-bar">
+      <b>Terminal</b><span>Shell</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span>
+      <div class="r">
+        <span class="ug"><svg width="16" height="16" viewBox="0 0 200 200" fill="none"><path d="M82 38L82 110Q82 134 100 134Q118 134 118 110L118 38" stroke="white" stroke-width="16" stroke-linecap="round"/><path d="M100 134L100 167" stroke="white" stroke-width="16" stroke-linecap="round"/><path d="M50 57Q38 79 38 100Q38 120 50 136" stroke="white" stroke-width="13" stroke-linecap="round"/><path d="M150 57Q162 79 162 100Q162 120 150 136" stroke="white" stroke-width="13" stroke-linecap="round"/></svg></span>
+        <span>Tue Oct 21&nbsp;&nbsp;9:41</span>
+      </div>
     </div>
-    <div class="mp-lines">
-      <div class="mp-line"><b>You</b> &nbsp;What's web-app doing?</div>
-      <div class="mp-line"><b>uttero</b> &nbsp;It finished the login form and the tests pass.</div>
+
+    <div class="term">
+      <div class="term-top"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>api-server — claude</span></div>
+<pre><span class="c">✻</span> Welcome to Claude Code
+
+<span class="d">&gt;</span> Message from @uttero: run the test suite and
+  report back
+
+<span class="c">⏺</span> I'll run the tests.
+
+<span class="c">⏺</span> Bash(npm test)
+  <span class="y">⎿  Waiting for approval…</span>
+
+  <span class="d">Do you want to proceed?</span>
+  <span class="d">❯ 1. Yes</span>
+  <span class="d">  2. No</span></pre>
     </div>
-    <div class="mp-approval">
-      <div class="q">I need your OK to run <code>npm test</code> in api-server</div>
-      <div class="row"><div>Allow</div><div>Deny</div></div>
+
+    <div class="hud">
+      <div class="callbar glass">
+        <div class="lvl"><i style="height:9px"></i><i style="height:15px"></i><i style="height:19px"></i><i style="height:13px"></i><i style="height:10px"></i></div>
+        <div class="cb-text"><div class="cb-cap">uttero</div><div class="cb-line">api-server wants to run npm test. Allow it?</div></div>
+        <div class="pill">api-server</div>
+        <div class="gbtn glass"><svg width="11" height="13" viewBox="0 0 12 16" fill="none"><rect x="3.5" y="0.5" width="5" height="9" rx="2.5" fill="#fff"/><path d="M1 7.5Q1 12 6 12Q11 12 11 7.5M6 12V15" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="gbtn glass red"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 9c-3.2 0-6.2.9-8.6 2.4-.8.5-1.1 1.5-.8 2.4l.7 1.6c.3.7 1.1 1.1 1.9.9l3-.8c.6-.2 1-.7 1-1.3v-1.6c1.8-.5 3.8-.5 5.6 0v1.6c0 .6.4 1.1 1 1.3l3 .8c.8.2 1.6-.2 1.9-.9l.7-1.6c.3-.9 0-1.9-.8-2.4C18.2 9.9 15.2 9 12 9z"/></svg></div>
+      </div>
+      <div class="apprbar glass">
+        <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="11" fill="#ff9f0a"/><rect x="9.6" y="5" width="2.8" height="8" rx="1.4" fill="#fff"/><circle cx="11" cy="16" r="1.5" fill="#fff"/></svg>
+        <div class="t"><div class="cb-cap">api-server wants to use Bash</div><code>npm test</code></div>
+        <div class="gb glass">Deny</div>
+        <div class="gb glass p">Allow</div>
+      </div>
     </div>
-    <div class="mp-sess"><i style="background:var(--amber)"></i>api-server<span>waiting</span></div>
-    <div class="mp-sess"><i style="background:var(--green)"></i>web-app<span>idle</span></div>
-    <div class="mp-sess"><i style="background:var(--v400)"></i>docs-site<span>working</span></div>
+
+    <div class="menu">
+      <div class="m-head"><b>uttero</b><div class="w">Wake word <div class="sw"></div></div></div>
+      <div class="m-row">
+        <div class="ri green"><svg width="13" height="13" viewBox="0 0 16 16" fill="#fff"><rect x="1" y="6" width="2" height="4" rx="1"/><rect x="4.5" y="3.5" width="2" height="9" rx="1"/><rect x="8" y="1" width="2" height="14" rx="1"/><rect x="11.5" y="4" width="2" height="8" rx="1"/><rect x="14.5" y="6.5" width="1.5" height="3" rx=".75"/></svg></div>
+        <div class="grow"><div>On a call</div><div class="sec">1:24, say "bye" to end</div></div>
+        <div class="sbtn circ"><svg width="11" height="13" viewBox="0 0 12 16" fill="none"><rect x="3.5" y="0.5" width="5" height="9" rx="2.5" fill="currentColor"/><path d="M1 7.5Q1 12 6 12Q11 12 11 7.5M6 12V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="sbtn red">End Call</div>
+      </div>
+      <div class="div"></div>
+      <div class="sh">Conversation</div>
+      <div class="conv">
+        <div><span>You</span>&nbsp; What's web-app doing?</div>
+        <div><span>uttero</span>&nbsp; The login form is done and its tests pass. Now I'm running the tests in api-server.</div>
+        <div><span>uttero</span>&nbsp; api-server wants to run npm test. Allow it?</div>
+      </div>
+      <div class="div"></div>
+      <div class="sh">Needs Approval</div>
+      <div class="appr">
+        <div class="top">
+          <div class="ri orange"><svg width="4" height="13" viewBox="0 0 4 13" fill="#fff"><rect x="0.5" y="0" width="3" height="8.5" rx="1.5"/><circle cx="2" cy="11.3" r="1.6"/></svg></div>
+          <div><div>api-server wants to use Bash</div><code>npm test</code><div class="sec">Auto-denies in 1:42</div></div>
+        </div>
+        <div class="btns"><div class="sbtn">Deny</div><div class="sbtn p">Allow</div></div>
+      </div>
+      <div class="div"></div>
+      <div class="sh">Sessions</div>
+      <div class="mr"><div class="ri accent"><svg width="13" height="12" viewBox="0 0 14 12" fill="none"><rect x=".75" y=".75" width="12.5" height="10.5" rx="2" stroke="#fff" stroke-width="1.4"/><path d="M3.5 4L5.5 6L3.5 8M7 8H10" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div>api-server</div><div class="sec" style="color:#ff9f0a">Focused, waiting for approval</div></div></div>
+      <div class="mr hov"><div class="ri"><svg width="13" height="12" viewBox="0 0 14 12" fill="none"><rect x=".75" y=".75" width="12.5" height="10.5" rx="2" stroke="rgba(255,255,255,.85)" stroke-width="1.4"/><path d="M3.5 4L5.5 6L3.5 8M7 8H10" stroke="rgba(255,255,255,.85)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div>web-app</div><div class="sec">Idle</div></div></div>
+      <div class="mr"><div class="ri"><svg width="13" height="12" viewBox="0 0 14 12" fill="none"><rect x=".75" y=".75" width="12.5" height="10.5" rx="2" stroke="rgba(255,255,255,.85)" stroke-width="1.4"/><path d="M3.5 4L5.5 6L3.5 8M7 8H10" stroke="rgba(255,255,255,.85)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div>docs-site</div><div class="sec">Background, working</div></div></div>
+      <div class="mr">New Session...</div>
+      <div class="div"></div>
+      <div class="field">Message uttero</div>
+      <div class="div"></div>
+      <div class="mr">Check for Updates...</div>
+      <div class="mr">uttero Settings...<span class="k">⌘,</span></div>
+      <div class="mr">Quit uttero<span class="k">⌘Q</span></div>
+    </div>
+  </div>
   </div>
 </div>
 </section>
@@ -248,6 +353,18 @@ footer a:hover{color:var(--white)}
 </footer>
 
 <script>
+// Scale the 1440x820 desktop scene to the width of its frame.
+(function fitScene() {
+  const screen = document.getElementById('screen'), scene = document.getElementById('scene');
+  const fit = () => {
+    const k = screen.clientWidth / 1440;
+    scene.style.setProperty('--s', k);
+    screen.style.height = (820 * k) + 'px';
+  };
+  fit();
+  window.addEventListener('resize', fit);
+})();
+
 // Point download links at the newest release from the appcast. The release workflow also rewrites them, so this is a fallback.
 (async function latestRelease() {
   try {
