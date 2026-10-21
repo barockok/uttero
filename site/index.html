@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uttero for macOS — Talk to every Claude Code session</title>
+<meta name="description" content="uttero is a free macOS menu bar app for talking to every Claude Code session on your Mac, by voice or text.">
+<meta property="og:title" content="uttero for macOS">
+<meta property="og:description" content="Talk to every Claude Code session on your Mac. Free download for macOS 26.">
+<meta property="og:url" content="https://uttero.dev">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08080E;--bg1:#0F0F18;--bg2:#16161F;--bg3:#1E1E2A;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);
+  --v700:#2E1C96;--v500:#6248E8;--v400:#8A72F5;--v300:#B0A0FA;--v200:#D4CAFC;
+  --white:#F0F0F5;--muted:#7A7A92;
+  --green:#20D49C;--amber:#FFAA3B;--red:#FF4D6A;
+  --mono:'Space Mono',monospace;--sans:'Space Grotesk',sans-serif;
+}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{font-family:var(--sans);background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+svg{display:block}
+.container{max-width:1080px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;border-bottom:1px solid var(--border);background:rgba(8,8,14,0.85);backdrop-filter:blur(12px)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:100%}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--mono);font-size:18px;font-weight:700;letter-spacing:.1em}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-right a.link{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-decoration:none}
+.nav-right a.link:hover{color:var(--white)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--bg);background:var(--white);padding:14px 26px;border-radius:4px;text-decoration:none;transition:background .2s,transform .15s}
+.btn:hover{background:var(--v200);transform:translateY(-2px)}
+.btn.sm{font-size:11px;padding:8px 16px;gap:8px}
+
+/* HERO */
+.hero{padding:140px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:800px;height:800px;background:radial-gradient(circle,rgba(98,72,232,0.16) 0%,transparent 60%);pointer-events:none}
+.hero .container{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;position:relative}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--v400);margin-bottom:24px}
+h1{font-family:var(--mono);font-size:clamp(36px,4.6vw,60px);font-weight:700;line-height:1.02;letter-spacing:-.03em;margin-bottom:24px}
+h1 span{color:var(--v400)}
+.sub{font-size:18px;color:var(--muted);max-width:480px;line-height:1.7;margin-bottom:36px}
+.sub strong{color:var(--white);font-weight:500}
+.meta{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);margin-top:16px}
+
+/* MENU MOCK */
+.mock{width:min(360px,100%);margin-left:auto;background:rgba(22,22,31,0.92);border:1px solid var(--border-hi);border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,0.55);padding:12px;font-size:13px}
+.mp-head{display:flex;align-items:center;gap:10px;padding:6px 6px 12px;border-bottom:1px solid var(--border)}
+.mp-live{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.mp-title{font-weight:600}
+.mp-sub{font-size:11px;color:var(--muted)}
+.mp-end{margin-left:auto;width:26px;height:26px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center}
+.mp-lines{padding:10px 6px;display:flex;flex-direction:column;gap:6px}
+.mp-line{font-size:12px;color:var(--muted);line-height:1.45}
+.mp-line b{color:var(--white);font-weight:500}
+.mp-approval{margin:4px 0 10px;padding:10px;border-radius:10px;background:rgba(98,72,232,0.12);border:1px solid rgba(98,72,232,0.3)}
+.mp-approval .q{font-size:12px;margin-bottom:8px}
+.mp-approval code{font-family:var(--mono);font-size:11px;color:var(--v300)}
+.mp-approval .row{display:flex;gap:6px}
+.mp-approval .row div{flex:1;text-align:center;font-size:12px;padding:5px;border-radius:7px;background:var(--bg3)}
+.mp-approval .row div:first-child{background:var(--v500);color:#fff}
+.mp-sess{display:flex;align-items:center;gap:10px;padding:6px;font-size:12px}
+.mp-sess i{width:7px;height:7px;border-radius:50%}
+.mp-sess span{margin-left:auto;color:var(--muted);font-size:11px}
+
+/* SECTIONS */
+section.block{padding:96px 0;border-top:1px solid var(--border)}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--v400);margin-bottom:16px}
+h2{font-family:var(--mono);font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:48px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--bg1);border:1px solid var(--border-hi);border-radius:8px;padding:28px}
+.card .n{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--v400);line-height:1;margin-bottom:14px}
+.card h3{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:8px}
+.card p{font-size:15px;color:var(--muted);line-height:1.65}
+.card p strong{color:var(--white);font-weight:500}
+.card code{font-family:var(--mono);font-size:12px;color:var(--v300)}
+.card a{color:var(--v300)}
+.note{margin-top:28px;font-size:14px;color:var(--muted)}
+.note code{font-family:var(--mono);font-size:12px;color:var(--v300);background:var(--bg2);padding:2px 6px;border-radius:3px}
+
+/* CTA */
+.cta{padding:120px 0;border-top:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(98,72,232,0.16) 0%,transparent 60%);pointer-events:none}
+.cta .container{position:relative}
+.cta h2{font-size:clamp(36px,5vw,64px);margin-bottom:16px}
+.cta p{font-size:17px;color:var(--muted);margin-bottom:36px}
+
+/* FOOTER */
+footer{padding:36px 0;border-top:1px solid var(--border)}
+footer .container{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer .links{display:flex;gap:24px;flex-wrap:wrap}
+footer a,footer small{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--white)}
+
+@media(max-width:900px){
+  .hero .container{grid-template-columns:1fr}
+  .mock{margin:0 auto}
+  .grid3{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .container{padding:0 16px}
+  .nav-right a.link{display:none}
+  .hero{padding:104px 0 72px}
+  section.block,.cta{padding:72px 0}
+  h2{margin-bottom:32px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+  <a class="logo" href="/">
+    <svg width="24" height="24" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <rect width="200" height="200" rx="40" fill="#2E1C96"/>
+      <path d="M82 38L82 110Q82 134 100 134Q118 134 118 110L118 38" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
+      <path d="M100 134L100 167" stroke="white" stroke-width="14" stroke-linecap="round"/>
+      <path d="M84 173L116 173" stroke="white" stroke-width="10" stroke-linecap="round"/>
+      <path d="M56 57Q44 79 44 100Q44 120 56 136" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.65"/>
+      <path d="M144 57Q156 79 156 100Q156 120 144 136" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.65"/>
+    </svg>
+    UTTERO
+  </a>
+  <div class="nav-right">
+    <a class="link" href="/docs/">DOCS</a>
+    <a class="link" href="https://github.com/barockok/uttero">GITHUB</a>
+    <a class="btn sm dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2V11M8 11L4 7M8 11L12 7M3 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      DOWNLOAD
+    </a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+  <div>
+    <div class="eyebrow">macOS menu bar app · for Claude Code</div>
+    <h1>Talk to every<br><span>Claude Code</span><br>session.</h1>
+    <p class="sub">uttero lives in your menu bar. Say <strong>“hey claude”</strong> to check on your sessions, start new ones and approve tool use, without going back to the terminal.</p>
+    <a class="btn dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2V11M8 11L4 7M8 11L12 7M3 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      DOWNLOAD FOR MAC
+    </a>
+    <div class="meta">FREE · VERSION <span data-ver>0.1.11</span> · MACOS 26+ · APPLE SILICON &amp; INTEL</div>
+  </div>
+
+  <div class="mock" aria-hidden="true">
+    <div class="mp-head">
+      <div class="mp-live"></div>
+      <div><div class="mp-title">On a call</div><div class="mp-sub">Focused on api-server</div></div>
+      <div class="mp-end"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="mp-lines">
+      <div class="mp-line"><b>You</b> &nbsp;What's web-app doing?</div>
+      <div class="mp-line"><b>uttero</b> &nbsp;It finished the login form and the tests pass.</div>
+    </div>
+    <div class="mp-approval">
+      <div class="q">I need your OK to run <code>npm test</code> in api-server</div>
+      <div class="row"><div>Allow</div><div>Deny</div></div>
+    </div>
+    <div class="mp-sess"><i style="background:var(--amber)"></i>api-server<span>waiting</span></div>
+    <div class="mp-sess"><i style="background:var(--green)"></i>web-app<span>idle</span></div>
+    <div class="mp-sess"><i style="background:var(--v400)"></i>docs-site<span>working</span></div>
+  </div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="block" id="features">
+<div class="container">
+  <div class="tag">What it does</div>
+  <h2>One voice for all your sessions.</h2>
+  <div class="grid3">
+    <div class="card">
+      <h3>Every session</h3>
+      <p>Ask what's running, hop between sessions, or say “start a session in api-server and fix the failing test.”</p>
+    </div>
+    <div class="card">
+      <h3>Approve by voice</h3>
+      <p>When a session needs permission, uttero asks you out loud or with an Allow / Deny notification.</p>
+    </div>
+    <div class="card">
+      <h3>On your Mac</h3>
+      <p>The wake phrase is recognized on-device. No servers, no account. Or just press <code>Option-Space</code>.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- INSTALL -->
+<section class="block" id="install">
+<div class="container">
+  <div class="tag">Get started</div>
+  <h2>Three steps.</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="n">01</div>
+      <h3>Download</h3>
+      <p><a class="dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">Get the DMG</a>, open it and drag uttero to Applications.</p>
+    </div>
+    <div class="card">
+      <div class="n">02</div>
+      <h3>Add the plugin</h3>
+      <p>In the uttero menu, click <strong>Install the Claude Code Plugin</strong>. Restart open sessions.</p>
+    </div>
+    <div class="card">
+      <div class="n">03</div>
+      <h3>Add your voice key</h3>
+      <p>Paste your OpenAI API key in <strong>Settings › Voice</strong>. Typing works without it.</p>
+    </div>
+  </div>
+  <p class="note">Needs macOS 26+ and Claude Code signed in. Prefer the terminal? <code>claude plugin marketplace add barockok/uttero</code> then <code>claude plugin install uttero@uttero</code>. More in the <a href="/docs/" style="color:var(--v300)">docs</a>.</p>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="download">
+<div class="container">
+  <h2>Start <span style="color:var(--v400)">talking.</span></h2>
+  <p>Free for macOS. Drag to Applications and say “hey claude.”</p>
+  <a class="btn dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2V11M8 11L4 7M8 11L12 7M3 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    DOWNLOAD UTTERO <span data-ver>0.1.11</span>
+  </a>
+</div>
+</section>
+
+<footer>
+<div class="container">
+  <small>© 2026 UTTERO</small>
+  <div class="links">
+    <a href="/docs/">DOCS</a>
+    <a href="https://github.com/barockok/uttero">GITHUB</a>
+    <a href="/privacy/">PRIVACY</a>
+    <a href="/terms/">TERMS</a>
+  </div>
+</div>
+</footer>
+
+<script>
+// Point download links at the newest release from the appcast. The release workflow also rewrites them, so this is a fallback.
+(async function latestRelease() {
+  try {
+    const res = await fetch('https://raw.githubusercontent.com/barockok/uttero/main/appcast.xml', { cache: 'no-store' });
+    if (!res.ok) return;
+    const xml = new DOMParser().parseFromString(await res.text(), 'application/xml');
+    const v = xml.getElementsByTagNameNS('http://www.andymatuschak.org/xml-namespaces/sparkle', 'shortVersionString')[0];
+    const version = v && v.textContent.trim();
+    if (!version || !/^[0-9][0-9.]*$/.test(version)) return;
+    const url = 'https://github.com/barockok/uttero/raw/main/uttero-' + version + '.dmg';
+    document.querySelectorAll('a.dl').forEach(a => { a.href = url; });
+    document.querySelectorAll('[data-ver]').forEach(s => { s.textContent = version; });
+  } catch {}
+})();
+</script>
+</body>
+</html>

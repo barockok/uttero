@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uttero docs — macOS app for Claude Code</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08080E;--bg1:#0F0F18;--bg2:#16161F;--bg3:#1E1E2A;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);
+  --v500:#6248E8;--v400:#8A72F5;--v300:#B0A0FA;--v200:#D4CAFC;
+  --white:#F0F0F5;--muted:#7A7A92;--green:#20D49C;--amber:#FFAA3B;
+  --mono:'Space Mono',monospace;--sans:'Space Grotesk',sans-serif;
+}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{font-family:var(--sans);background:var(--bg);color:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--v400);text-decoration:none;transition:color .2s}
+a:hover{color:var(--v300)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;border-bottom:1px solid var(--border);background:rgba(8,8,14,0.85);backdrop-filter:blur(12px);display:flex;justify-content:center}
+nav>.container{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:100%;max-width:1100px;width:100%}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-wordmark{font-family:var(--mono);font-size:18px;font-weight:700;letter-spacing:0.1em;color:var(--white)}
+.nav-cta{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--bg)!important;background:var(--white);padding:8px 18px;border-radius:4px}
+.nav-cta:hover{background:var(--v200)}
+.content{max-width:760px;margin:0 auto;padding:120px 32px 80px}
+h1{font-family:var(--mono);font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.subtitle{font-family:var(--mono);font-size:12px;letter-spacing:0.1em;color:var(--muted);margin-bottom:48px}
+h2{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--v400);margin-top:48px;margin-bottom:16px;letter-spacing:-0.01em;scroll-margin-top:80px}
+h3{font-family:var(--mono);font-size:14px;font-weight:700;margin-top:28px;margin-bottom:10px}
+p,ul,ol{color:rgba(240,240,245,0.78);margin-bottom:16px}
+ul,ol{padding-left:24px}
+li{margin-bottom:8px}
+strong{color:var(--white);font-weight:600}
+code{font-family:var(--mono);font-size:0.86em;color:var(--v300);background:var(--bg2);padding:1px 6px;border-radius:3px}
+pre{background:var(--bg1);border:1px solid var(--border-hi);border-radius:8px;padding:18px 20px;overflow-x:auto;margin-bottom:16px}
+pre code{background:none;padding:0;color:var(--white);font-size:13px;line-height:1.8}
+table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);font-weight:700}
+td{color:rgba(240,240,245,0.78)}
+.toc{background:var(--bg1);border:1px solid var(--border-hi);border-radius:8px;padding:20px 24px;margin-bottom:24px}
+.toc ol{margin:0}
+.toc li{margin-bottom:4px}
+.note{border-left:2px solid var(--v500);background:rgba(98,72,232,0.08);padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:16px;color:rgba(240,240,245,0.85)}
+footer{border-top:1px solid var(--border);padding:32px;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.05em}
+footer a{color:var(--muted)}footer a:hover{color:var(--white)}
+@media(max-width:640px){nav>.container{padding:0 16px}.content{padding:96px 16px 64px}th,td{padding:8px 6px}}
+</style>
+</head>
+<body>
+<nav>
+<div class="container">
+  <a class="nav-logo" href="/">
+    <svg width="24" height="24" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <rect width="200" height="200" rx="40" fill="#2E1C96"/>
+      <path d="M82 38L82 110Q82 134 100 134Q118 134 118 110L118 38" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
+      <path d="M100 134L100 167" stroke="white" stroke-width="14" stroke-linecap="round"/>
+      <path d="M84 173L116 173" stroke="white" stroke-width="10" stroke-linecap="round"/>
+      <path d="M56 57Q44 79 44 100Q44 120 56 136" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.65"/>
+      <path d="M144 57Q156 79 156 100Q156 120 144 136" stroke="white" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.65"/>
+    </svg>
+    <span class="nav-wordmark">UTTERO</span>
+  </a>
+  <a class="nav-cta dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">DOWNLOAD</a>
+</div>
+</nav>
+<div class="content">
+  <h1>uttero docs</h1>
+  <div class="subtitle">THE MACOS MENU BAR APP FOR CLAUDE CODE</div>
+
+  <div class="toc"><ol>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#plugin">The Claude Code plugin</a></li>
+    <li><a href="#voice">Voice setup</a></li>
+    <li><a href="#talking">Talking to uttero</a></li>
+    <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#approvals">Approvals</a></li>
+    <li><a href="#memory">Memory</a></li>
+    <li><a href="#settings">Settings</a></li>
+    <li><a href="#updates">Updates</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#uninstall">Uninstall</a></li>
+  </ol></div>
+
+  <h2 id="install">1. Install</h2>
+  <p>You need macOS 26 or later (Apple silicon or Intel) and Claude Code, with <code>claude</code> on your PATH and signed in.</p>
+  <ol>
+    <li><a class="dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">Download uttero <span data-ver>0.1.11</span></a>, open the DMG and drag uttero to Applications.</li>
+    <li>Open uttero. It lives in the menu bar and has no Dock icon.</li>
+    <li>On first launch a welcome guide walks you through the microphone, the wake phrase, your voice and the Claude Code plugin. You can replay it from <strong>Settings › General › Welcome guide</strong>.</li>
+  </ol>
+  <p>The app is signed with a Developer ID and notarized by Apple.</p>
+
+  <h2 id="plugin">2. The Claude Code plugin</h2>
+  <p>The plugin lets each Claude Code session send its approvals and updates (finished, waiting, needs attention) to uttero. Without it, uttero can still message your sessions, but it won't hear back from sessions it didn't start.</p>
+  <p>Install it from the uttero menu with <strong>Install the Claude Code Plugin</strong>, or yourself:</p>
+  <pre><code>claude plugin marketplace add barockok/uttero
+claude plugin install uttero@uttero</code></pre>
+  <p>Restart Claude Code sessions that were already open so they load it. When uttero isn't running, the plugin stays silent and Claude Code behaves as usual.</p>
+
+  <h2 id="voice">3. Voice setup</h2>
+  <p>Voice calls use OpenAI GPT-Live. Add your OpenAI API key in <strong>Settings › Voice</strong>; it's stored in your Keychain. uttero also picks up <code>OPENAI_API_KEY</code> from your login shell.</p>
+  <p>OpenAI bills your key while a call is open, so uttero hangs up after a quiet period (30 seconds to 5 minutes, set in Settings › Voice). Typed messages to uttero don't need a key.</p>
+  <p>In Settings › Voice you can also choose the voice, the microphone and the speaker (System Default follows Control Center, including earphones that connect later), and turn on echo cancellation so you can use speakers.</p>
+
+  <h2 id="talking">4. Talking to uttero</h2>
+  <table>
+    <tr><th>TO</th><th>DO THIS</th></tr>
+    <tr><td>Start a call</td><td>Say the wake phrase (default <strong>“hey claude”</strong>), or press <code>Option-Space</code>, or click Talk in the menu</td></tr>
+    <tr><td>End a call</td><td>Say “bye” or “that's all”, press <code>Option-Space</code>, or click hang up</td></tr>
+    <tr><td>Mute</td><td><code>Option-M</code> during a call, or the mute button in the call bar</td></tr>
+    <tr><td>Type instead</td><td>Use the text field in the menu</td></tr>
+  </table>
+  <p>The wake phrase is recognized on your Mac by Apple's speech recognizer. Nothing is sent until you say it. Pick a phrase made of real words; invented words are recognized poorly. With the wake phrase off, uttero doesn't use the microphone outside a call.</p>
+  <p>During a call, a call bar floats at the top of the screen with mute, hang up and any pending approval. You can turn it off in Settings › General.</p>
+
+  <h2 id="sessions">5. Sessions</h2>
+  <p>uttero sees the Claude Code sessions on your Mac, in terminals and in the background. Ask it things like:</p>
+  <ul>
+    <li>“What's running?” or “Which sessions are waiting on me?”</li>
+    <li>“Switch to web-app.” (uttero focuses that session; what you say next goes there)</li>
+    <li>“Start a session in ~/code/api-server and fix the failing test.”</li>
+    <li>“Stop the docs session.”</li>
+  </ul>
+  <p>Sessions uttero starts are its own: it follows their progress and tells you when they finish or get stuck. Sessions you started yourself stay yours; uttero messages them only when you ask. You can also start one with <strong>New Session…</strong> in the menu.</p>
+  <div class="note">Claude Code refuses to start a background session in a folder you haven't trusted yet. Open Claude Code in that folder once, or uttero will tell you it couldn't start.</div>
+
+  <h2 id="approvals">6. Approvals</h2>
+  <p>When a session with the plugin wants to run a tool that needs your permission, uttero asks you: out loud during a call, in the call bar, in the menu, or as a notification with Allow and Deny. The terminal dialog stays open at the same time; whichever you answer first wins. If you don't answer in time, the terminal dialog stays and nothing runs.</p>
+  <p>For safety, a spoken approval needs a clear answer (“yes, allow it” / “no”). Anything unclear is asked again.</p>
+  <p>By default, sessions uttero starts (and the manager itself) skip permission prompts, and the manager confirms sending, deleting or pushing with you first. Turn off <strong>Settings › Manager › Skip permission prompts</strong> to approve every tool call.</p>
+
+  <h2 id="memory">7. Memory</h2>
+  <p>uttero is one long-lived manager. It keeps notes as plain Markdown in <code>~/.uttero-osx/memory/</code>: a curated <code>MEMORY.md</code>, daily notes and one file per project. It writes down durable things it learned (not secrets or routine progress). Say “forget that” to remove something, or edit the files yourself.</p>
+  <p>To start over, use <strong>Settings › Manager › Start fresh</strong>. Your sessions keep running.</p>
+
+  <h2 id="settings">8. Settings</h2>
+  <table>
+    <tr><th>TAB</th><th>WHAT'S THERE</th></tr>
+    <tr><td>General</td><td>Open at login, call bar, shortcuts, approval notifications, updates, welcome guide</td></tr>
+    <tr><td>Voice</td><td>Wake phrase, OpenAI key, voice, microphone and speaker, spoken updates when not on a call, quiet timeout, echo cancellation</td></tr>
+    <tr><td>Manager</td><td>Tools (inherit your Claude Code profile, or manage sessions only), skip permission prompts, project plugins, start fresh</td></tr>
+    <tr><td>Advanced</td><td>Core folder, port, approval timeout, log</td></tr>
+  </table>
+  <p>With <strong>Inherit my Claude Code profile</strong> (the default), the manager loads your MCP servers, connectors and plugins for quick lookups like your calendar or the web, and hands project work to sessions.</p>
+
+  <h2 id="updates">9. Updates</h2>
+  <p>uttero updates itself. Use <strong>Check for Updates…</strong> in the menu, or leave automatic checks on in Settings › General. Updates are signed; uttero only installs ones that match its key.</p>
+  <p>Versions 0.1.5 and older have no updater: <a class="dl" href="https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg">download the latest DMG</a> once by hand.</p>
+
+  <h2 id="troubleshooting">10. Troubleshooting</h2>
+  <h3>Sessions don't send approvals or updates</h3>
+  <p>Check the plugin is installed (<code>claude plugin list</code>) and restart sessions opened before you installed it.</p>
+  <h3>uttero says it can't find Claude Code</h3>
+  <p>uttero reads your PATH from your login shell. Make sure <code>claude</code> runs in a new Terminal window, then quit and reopen uttero.</p>
+  <h3>The wake phrase doesn't trigger</h3>
+  <p>Check uttero has Microphone and Speech Recognition access in System Settings › Privacy &amp; Security. Try a phrase of two common words. Audio played by the Mac itself is cancelled out on purpose, so a video saying the phrase won't wake it.</p>
+  <h3>No sound after switching headphones</h3>
+  <p>Choose System Default in Settings › Voice, or pick the device there.</p>
+  <h3>Logs</h3>
+  <p>The core writes to <code>~/Library/Logs/uttero/core.log</code>. Include it when you <a href="https://github.com/barockok/uttero/issues">report an issue</a>.</p>
+
+  <h2 id="uninstall">11. Uninstall</h2>
+  <pre><code>claude plugin uninstall uttero@uttero
+claude plugin marketplace remove uttero
+rm -rf ~/.uttero-osx</code></pre>
+  <p>Then drag uttero from Applications to the Trash. Your OpenAI key stays in the Keychain until you remove it in Keychain Access or Settings › Voice.</p>
+</div>
+<footer>
+  <a href="/">uttero.dev</a> &middot; <a href="/docs/">Docs</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="https://github.com/barockok/uttero">GitHub</a>
+</footer>
+</body>
+</html>
