@@ -3,6 +3,15 @@
   <channel>
     <title>uttero</title>
     <item>
+      <title>uttero 0.1.11</title>
+      <pubDate>Wed, 21 Oct 2026 07:07:02 GMT</pubDate>
+      <sparkle:version>13</sparkle:version>
+      <sparkle:shortVersionString>0.1.11</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Welcome guide: order the window front even when macOS refuses to activate uttero</li></ul>]]></description>
+      <enclosure url="https://raw.githubusercontent.com/barockok/uttero/main/uttero-0.1.11-macos.zip" type="application/octet-stream" sparkle:edSignature="oGqNtZ4fe504sYu+9oA6XL5BbbkstlG4gTVBg+COsqLW4QPEUwIXn0JLTTo1yAGfiPX47kRYraAsgvruZyc1DQ==" length="67255023" />
+    </item>
+    <item>
       <title>uttero 0.1.10</title>
       <pubDate>Wed, 21 Oct 2026 05:16:35 GMT</pubDate>
       <sparkle:version>12</sparkle:version>
