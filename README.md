@@ -28,4 +28,4 @@ After that, uttero updates itself: use Check for Updates in its menu, or let it 
 - `uttero-<version>.dmg`, `uttero-<version>-macos.zip`: the app (signed and notarized)
 - `appcast.xml`: the update feed the app reads
 - `plugin/`: the Claude Code plugin, published as the `uttero` marketplace
-- `site/`: uttero.dev, deployed to Netlify by `.github/workflows/site.yml` (secrets `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID`). Download links in it are bumped by each release.
+- `site/`: uttero.dev. Netlify builds it from this repo (base directory `site`). Download links in it are bumped by each release.

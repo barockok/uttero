@@ -1,0 +1,6 @@
+# Netlify builds this site from barockok/uttero with base directory "site" (set in the Netlify UI).
+# Static files, no build command. Headers and redirects live in _headers and _redirects.
+[build]
+  publish = "."
+  # Skip deploys for commits that don't touch site/ (most release commits only add DMGs and the appcast).
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
