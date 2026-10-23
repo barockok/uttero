@@ -1,0 +1,3 @@
+# Stable download link. The release workflow in barockok/uttero-osx rewrites the DMG name on every release.
+/download  https://github.com/barockok/uttero/raw/main/uttero-0.1.11.dmg  302
+/appcast.xml  https://raw.githubusercontent.com/barockok/uttero/main/appcast.xml  302
