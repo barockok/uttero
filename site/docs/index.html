@@ -93,6 +93,9 @@ footer a{color:var(--muted)}footer a:hover{color:var(--white)}
     <li>Open uttero. It lives in the menu bar and has no Dock icon.</li>
     <li>On first launch a welcome guide walks you through the microphone, the wake phrase, your voice and the Claude Code plugin. You can replay it from <strong>Settings › General › Welcome guide</strong>.</li>
   </ol>
+  <p>Or install it with Homebrew:</p>
+  <pre><code>brew install --cask barockok/tap/uttero</code></pre>
+  <p>uttero updates itself either way, so <code>brew upgrade</code> leaves it alone.</p>
   <p>The app is signed with a Developer ID and notarized by Apple.</p>
 
   <h2 id="plugin">2. The Claude Code plugin</h2>
@@ -168,7 +171,7 @@ claude plugin install uttero@uttero</code></pre>
   <pre><code>claude plugin uninstall uttero@uttero
 claude plugin marketplace remove uttero
 rm -rf ~/.uttero-osx</code></pre>
-  <p>Then drag uttero from Applications to the Trash. Your OpenAI key stays in the Keychain until you remove it in Keychain Access or Settings › Voice.</p>
+  <p>Then drag uttero from Applications to the Trash, or run <code>brew uninstall --cask uttero</code> if you installed it with Homebrew. Your OpenAI key stays in the Keychain until you remove it in Keychain Access or Settings › Voice.</p>
 </div>
 <footer>
   <a href="/">uttero.dev</a> &middot; <a href="/docs/">Docs</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="https://github.com/barockok/uttero">GitHub</a>

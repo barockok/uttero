@@ -17,6 +17,14 @@ claude plugin install uttero@uttero
 
 After that, uttero updates itself: use Check for Updates in its menu, or let it check automatically.
 
+### With Homebrew
+
+```
+brew install --cask barockok/tap/uttero
+```
+
+Then continue from step 2. The cask lives in [barockok/homebrew-tap](https://github.com/barockok/homebrew-tap). uttero updates itself, so `brew upgrade` leaves it alone.
+
 ## Requirements
 
 - macOS 26 or later (Apple silicon or Intel)
